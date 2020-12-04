@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>Age Calculator</h1>
+            <label><h1>Date of Birth</h1></label><br>
+            <div class="input-group input-group-lg">
+                <input type="date" id="dob" ng-model="dob" class="form-control" placeholder="Date of Birth" aria-describedby="sizing-addon1">
+            </div><br>
+
+            <div class="panel panel-default"  ng-show="dobcalculated">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Calculated Age</h3>
+                </div>
+                <div class="panel-body">
+                    <h4 class="card-title">Your Age is</h4>
+                    <h5 class="card-text">
+                        {{dobInYMD}}<br>
+                        <br>
+                        <br>
+                        EXtras<br>
+                        Year {{years}}<br>
+                        Months {{months}}<br>
+                        Weeks {{weeks}}<br>
+                        Days {{days}}<br>
+                        Hours {{hours}}<br>
+                        Minutes {{minutes}}<br>
+                        Seconds {{seconds}}<br>
+                    </h5>
+                </div>
+            </div>
+            <p><!--<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>--></p>
+        </div>
+    </div>
+    
+</body>
+</html>
