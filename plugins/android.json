@@ -12,6 +12,9 @@
     },
     "cordova-plugin-android-fingerprint-auth": {
       "PACKAGE_NAME": "io.cordova.agecalculator"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "io.cordova.agecalculator"
     }
   },
   "dependent_plugins": {}

@@ -1,5 +1,6 @@
 //Controller
 app.controller('homeController', ['$scope', '$http', function ($scope, $http) {
+
     $scope.openNav = function () {
         document.getElementById("mySidebar").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
@@ -109,6 +110,10 @@ app.controller('homeController', ['$scope', '$http', function ($scope, $http) {
         $scope.dobcalculated = true;
     };
 
+    $scope.getYearFromDOB = function (dob) {
+        return moment().diff(dob, 'years', false);
+    };
+
     // function to calculate current age 
     $scope.findAge = function(current_date, current_month, current_year, birth_date, birth_month, birth_year) {
         // days of every month 
@@ -139,4 +144,59 @@ app.controller('homeController', ['$scope', '$http', function ($scope, $http) {
         // print the present age 
         return ("Present Age In Years: " + calculated_year + "  Months: " + calculated_month + "  Days: " +calculated_date);
     }; 
+
+    $scope.CategoryList = [
+          { ID: 1, Name: "Birthday" }
+        , { ID: 2, Name: "Anniversary" }
+    ];
+
+    //can Date of Birth or Date of Joining
+    if ($scope.DateOfItem==undefined)
+        $scope.DateOfItem = [];
+    if ($scope.DateOfItem == null)
+        $scope.DateOfItem = [];
+    //var addItem = new Object();
+    //addItem.Date = new Date();//date value
+    //addItem.Name = "Your Name";
+    //addItem.Category = 1;//$scope.CategoryList
+    //addItem.Mobile = "Your Mobile Number";
+    //$scope.DateOfItem.push(addItem);
+
+    $scope.addAgeDetails = function (addItem) {
+        debugger;
+        $scope.DateOfItem.push(addItem);
+    };
+
+    $scope.deleteLastAgeDetail = function () {
+        $scope.DateOfItem.splice(1,1);
+    };
+
+    $scope.clearAgeDetails = function () {
+        $scope.DateOfItem = [];
+    };
+
+    $scope.newAgeDetail = function (addItemModel) {
+        if (addItemModel == undefined) {
+            $scope.addItem = [];
+        } else {
+            $scope.addItem = addItemModel;
+        }
+        
+    };
+
+    $(document).ready(function () {
+        function alignModal() {
+            var modalDialog = $(this).find(".modal-dialog");
+
+            // Applying the top margin on modal to align it vertically center
+            modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+        }
+        // Align modal when it is displayed
+        $(".modal").on("shown.bs.modal", alignModal);
+
+        // Align modal when user resize the window
+        $(window).on("resize", function () {
+            $(".modal:visible").each(alignModal);
+        });
+    });
 }]);
